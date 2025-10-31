@@ -9,7 +9,9 @@ import {
     YAxis,
 } from "recharts";
 
-const IncomeExpenseChart = ({ totalIncome, totalExpense }) => {
+// ✅ FIX: Add default values to the props.
+// If totalIncome or totalExpense are not provided, they will default to 0.
+const IncomeExpenseChart = ({ totalIncome = 0, totalExpense = 0 }) => {
     const data = [
         { name: "Income", income: totalIncome, expense: 0 },
         { name: "Expense", income: 0, expense: totalExpense },
@@ -29,15 +31,14 @@ const IncomeExpenseChart = ({ totalIncome, totalExpense }) => {
                     <Legend
                         wrapperStyle={{ color: "#e2e8f0" }}
                     />
-                    {/* ✅ Blue bar for Income */}
                     <Bar dataKey="income" fill="#3b82f6" name="Total Income" barSize={50} />
-                    {/* ✅ Red bar for Expense */}
                     <Bar dataKey="expense" fill="#ef4444" name="Total Expense" barSize={50} />
                 </BarChart>
             </ResponsiveContainer>
 
             {/* Display Totals */}
             <div className="flex justify-around mt-4 text-xl font-semibold">
+                {/* This code will now safely call .toLocaleString() on the number 0 instead of undefined */}
                 <div className="text-blue-400">₹{totalIncome.toLocaleString()}</div>
                 <div className="text-red-400">₹{totalExpense.toLocaleString()}</div>
             </div>

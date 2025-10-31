@@ -18,8 +18,9 @@ const App = () => {
 
   const loadBackend = async () => {
   try {
+    const url = import.meta.env.VITE_API_BASE_URL + "/health";
+    console.log("Wait for backend  " + url);
     const response = await fetch("https://money-manager-api-5-cxz0.onrender.com/api/v1.0/health");
-
     // Check if the response is OK (status 200-299)
     if (!response.ok) {
       throw new Error(`Backend health check failed with status: ${response.status}`);
