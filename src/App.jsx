@@ -1,0 +1,89 @@
+
+import { useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Categories from "./pages/Categories";
+import Dashboard from "./pages/Dashboard";
+import Expenses from "./pages/Expenses";
+import Filter from "./pages/Filter";
+import Home from "./pages/Home";
+import Income from "./pages/Income";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import { useAuthStore } from "./store/authStore";
+
+const App = () => {
+  const { isAuthenticated } = useAuthStore();
+  const [loading, setLoading] = useState(true);
+
+  const loadBackend = async () => {
+  try {
+    const response = await fetch("https://money-manager-api-5-cxz0.onrender.com/api/v1.0/health");
+
+    // Check if the response is OK (status 200-299)
+    if (!response.ok) {
+      throw new Error(`Backend health check failed with status: ${response.status}`);
+    }
+
+    console.log("Backend is healthy:", response);
+  } catch (error) {
+    console.error("Backend loading error:", error);
+  } finally {
+    setLoading(false);
+  }
+};
+
+useEffect(() => {
+  loadBackend();
+}, []);
+
+if (loading) {
+  return (
+    <div className="fixed inset-0 z-[9999] flex flex-col justify-center items-center bg-background/80 backdrop-blur-sm">
+      {/* The Spinner Element */}
+      <div className="w-16 h-16 border-4 border-slate-600 border-t-sky-400 rounded-full animate-spin"></div>
+
+      {/* The "Loading..." Text with a matching glow effect */}
+      <p className="mt-4 text-lg text-slate-300 drop-shadow-[0_0_8px_rgba(14,165,233,0.3)]">
+        Loading...
+      </p>
+    </div>
+  );
+}
+
+  return (
+   <>
+            <Toaster />
+            <BrowserRouter>
+              <Routes>
+                {!isAuthenticated ? (
+                  <>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
+                    <Route path="*" element={<Navigate to="/login" replace />} />
+                  </>
+                ) : (
+                  <>
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/expenses" element={<Expenses />} />
+                    <Route path="/income" element={<Income />} />
+                    <Route path="/categories" element={<Categories />} />
+                    {/* <Route path="/profile" element={<Profile />} /> */}
+                    <Route path="/filter" element={<Filter />} />
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                  </>
+
+                )}
+              </Routes>
+            </BrowserRouter>
+  
+     
+    </>
+
+  )
+};
+
+export default App;
