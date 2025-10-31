@@ -102,11 +102,12 @@ function Dashboard() {
                         totalExpense={dashboardData.totalExpense}
                     />
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        {/* The Budget component now receives live expense data */}
-                        <Budget expenses={dashboardData.recent5Expenses} />
-
-                        {/* The RecentTransactions component now receives live transaction data */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 justify-center align-center">
+                        <Budget
+                            totalIncome={dashboardData.totalIncome}
+                            totalExpense={dashboardData.totalExpense}
+                            totalBalance={dashboardData.totalBalance}
+                        />
                         <RecentTransactions transactions={dashboardData.recentTransactions} />
                     </div>
 
