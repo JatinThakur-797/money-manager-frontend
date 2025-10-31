@@ -4,6 +4,7 @@ import data from '@emoji-mart/data';
 import Picker from '@emoji-mart/react';
 import { Pencil, PlusCircle, SmilePlus, Trash2, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import toast from 'react-hot-toast';
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { categoryAPI } from "../services/api";
@@ -28,6 +29,7 @@ function Categories() {
         setLoading(true);
         const response = await categoryAPI.getAll();
         setCategories(response.data);
+       
       } catch (error) {
         if (error.status === 403 || error.status === 401) {
           alert("Session is expired. Please Login again.");
@@ -74,10 +76,13 @@ function Categories() {
       const payload = { name: categoryName, type: categoryType, icon: categoryIcon };
       if (currentCategory) {
         await categoryAPI.update(currentCategory.id, payload);
+        toast.success("Category updated successfully!");
       } else {
         await categoryAPI.create(payload);
+        toast.success("Category created successfully!");
       }
       const response = await categoryAPI.getAll();
+
       setCategories(response.data);
     } catch (error) {
       console.error("Error saving category:", error);

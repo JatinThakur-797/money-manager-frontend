@@ -2,6 +2,7 @@
 
 import { AlertTriangle, CheckCircle2, Lock, Mail, User } from "lucide-react"; // Import icons
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { authAPI } from "../services/api";
 
@@ -15,7 +16,7 @@ const Signup = () => {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,8 +39,8 @@ const Signup = () => {
           formData.name
         );
         console.log(response);
-
-        setSuccess("Registration successful! Redirecting to login page...");
+        toast.success("Registration successful! Redirecting to login page...");
+     
         setTimeout(() => {
           navigate("/login");
         }, 2000);
@@ -68,15 +69,7 @@ const Signup = () => {
           Create your account to get started
         </p>
 
-        {success && (
-          <div
-            className="glass-panel flex items-center gap-3 p-4 rounded-lg border border-red-500/40 mb-4"
-            role="alert"
-          >
-            <CheckCircle2 className="text-red-400 h-5 w-5 flex-shrink-0" />
-            <span className="text-green-400 text-sm font-medium">{success}</span>
-          </div>
-        )}
+        
         {errorM && (
           <div
             className="glass-panel flex items-center gap-3 p-4 rounded-lg border border-red-500/40 mb-4"

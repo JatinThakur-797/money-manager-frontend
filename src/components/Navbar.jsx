@@ -1,18 +1,18 @@
 import { Bell, Search } from 'lucide-react';
+import toast from 'react-hot-toast'; // ✅ FIX: Import toast
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 
 const Navbar = () => {
     const { logout, isAuthenticated } = useAuthStore()
     const navigate = useNavigate();
+
     const handleLogout = () => {
-
         logout();
-        alert("Logout Successfull");
-        navigate("/")
-
-
+        toast.success("Logout Successful"); // ✅ FIX: Use a success toast
+        navigate("/");
     }
+
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/5">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -22,11 +22,13 @@ const Navbar = () => {
                         <div className="hidden md:flex items-center space-x-8">
                             {!isAuthenticated ? (
                                 <>
+                                    <Link to={"/home"} className="text-sm text-gray-400 hover:text-white transition-colors">Home</Link>
                                     <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">About</a>
                                     <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">Contact Us</a>
                                 </>)
                                 :
                                 (<>
+                                    <Link to={"/home"} className="text-sm text-gray-400 hover:text-white transition-colors">Home</Link>
                                     <Link to={"/dashboard"} className="text-sm text-gray-400 hover:text-white transition-colors">Dashboard</Link>
                                     <Link to={"/expenses"} className="text-sm text-gray-400 hover:text-white transition-colors">Expenses</Link>
                                     <Link to={"/income"} className="text-sm text-gray-400 hover:text-white transition-colors">Income</Link>

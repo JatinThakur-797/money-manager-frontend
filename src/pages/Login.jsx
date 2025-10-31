@@ -2,6 +2,7 @@
 
 import { AlertTriangle, Lock, Mail } from 'lucide-react'; // Import icons
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { authAPI } from '../services/api';
 import { useAuthStore } from '../store/authStore';
@@ -26,10 +27,12 @@ const Login = () => {
       const response = await authAPI.login(formData.email, formData.password);
       console.log(response)
       setAuth(response.data.user, response.data.token)
+      toast.success("Login Successful");
       navigate("/dashboard")
 
     } catch (error) {
       console.log(error.response)
+      toast.error(error.message)
       setError({ submit: error.response?.data?.message || "Login failed" })
     } finally {
       setLoading(false)
