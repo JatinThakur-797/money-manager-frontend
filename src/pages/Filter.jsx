@@ -3,11 +3,11 @@
 
 import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { categoryAPI, filterAPI } from "../services/api"; // The filter API we added
 import { useAuthStore } from "../store/authStore";
-import toast from "react-hot-toast";
 
 function Filter() {
   // State for the filter form inputs
