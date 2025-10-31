@@ -39,7 +39,8 @@ const Signup = () => {
         formData.password,
         formData.name
       );
-      toast.success("Registration successful! Redirecting to login...");
+
+      toast.success("Registration successful! Activate account by you mail");
       setTimeout(() => {
         navigate("/login");
       }, 2000);
