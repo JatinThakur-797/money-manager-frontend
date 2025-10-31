@@ -1,11 +1,7 @@
 // src/components/Budget.jsx
 import { useMemo } from 'react';
 
-const currencyFormatter = new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR',
-    minimumFractionDigits: 0,
-});
+import currencyFormatter from './currencyFormatter';
 
 const Budget = ({ totalIncome = 0, totalExpense = 0, totalBalance = 0 }) => {
 

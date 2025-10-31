@@ -1,10 +1,6 @@
 // src/components/RecentTransactions.jsx
 import { ArrowDownLeft, ArrowUpRight } from 'lucide-react';
-const currencyFormatter = new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR', // Or 'USD' depending on your preference
-    minimumFractionDigits: 2,
-});
+import currencyFormatter from './currencyFormatter';
 // This component now receives transactions as a prop from the Dashboard
 const RecentTransactions = ({ transactions = [] }) => {
     return (

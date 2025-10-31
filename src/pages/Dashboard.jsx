@@ -12,11 +12,8 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import RecentTransactions from "../components/RecentTransactions";
 import StatCard from "../components/StatCard";
+import currencyFormatter from '../components/currencyFormatter';
 
-const currencyFormatter = new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR',
-});
 
 function Dashboard() {
     const [dashboardData, setDashboardData] = useState(null);
