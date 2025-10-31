@@ -31,6 +31,7 @@ function Categories() {
         setCategories(response.data);
        
       } catch (error) {
+        toast.error("Could not fetch categories.");
         if (error.status === 403 || error.status === 401) {
           alert("Session is expired. Please Login again.");
           logout();

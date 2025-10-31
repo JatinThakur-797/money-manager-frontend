@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { categoryAPI, filterAPI } from "../services/api"; // The filter API we added
 import { useAuthStore } from "../store/authStore";
+import toast from "react-hot-toast";
 
 function Filter() {
   // State for the filter form inputs
@@ -32,6 +33,7 @@ function Filter() {
         const response = await categoryAPI.getAll();
         setCategories(response.data);
       } catch (error) {
+        toast.error("Failed to fetch filtered data. Please try again.");
         console.error("Failed to fetch categories:", error);
       }
     };

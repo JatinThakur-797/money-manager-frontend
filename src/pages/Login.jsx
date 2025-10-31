@@ -32,7 +32,6 @@ const Login = () => {
 
     } catch (error) {
       console.log(error.response)
-      toast.error(error.message)
       setError({ submit: error.response?.data?.message || "Login failed" })
     } finally {
       setLoading(false)
