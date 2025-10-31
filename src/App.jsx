@@ -41,11 +41,9 @@ const App = () => {
 
   if (loading) {
     return (
-      <div className="fixed inset-0 z-[9999] flex flex-col justify-center items-center bg-background/80 backdrop-blur-sm">
-        <div className="w-16 h-16 border-4 border-slate-600 border-t-sky-400 rounded-full animate-spin"></div>
-        <p className="mt-4 text-lg text-slate-300 drop-shadow-[0_0_8px_rgba(14,165,233,0.3)]">
-          Loading...
-        </p>
+      <div className="min-h-screen text-white antialiased flex items-center justify-center bg-background">
+        <div className="w-12 h-12 border-4 border-slate-600 border-t-sky-400 rounded-full animate-spin"></div>
+        Loding...
       </div>
     );
   }
