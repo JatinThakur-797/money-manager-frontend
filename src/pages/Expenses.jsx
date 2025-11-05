@@ -29,6 +29,7 @@ function Expense() {
           expenseAPI.getAll(),
           categoryAPI.getAll(),
         ]);
+        
 
         setExpenses(expenseResponse.data);
         const expenseCategories = categoryResponse.data.filter(
