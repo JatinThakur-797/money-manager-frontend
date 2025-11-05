@@ -9,7 +9,7 @@ const Signup = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    name: "",
+    fullName: "",
     confirmPassword: "",
   });
   const [loading, setLoading] = useState(false);
@@ -37,7 +37,7 @@ const Signup = () => {
       await authAPI.signup(
         formData.email,
         formData.password,
-        formData.name
+        formData.fullName
       );
 
       toast.success("Registration successful! Activate account by you mail");
@@ -80,7 +80,7 @@ const Signup = () => {
           {/* Form inputs remain the same */}
           <div className="relative">
             <User size={20} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-            <input type="text" name="name" placeholder="Full Name" className="w-full pl-10 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none text-white transition-all duration-200" onChange={handleChange} required />
+            <input type="text" name="fullName" placeholder="Full Name" className="w-full pl-10 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none text-white transition-all duration-200" onChange={handleChange} required />
           </div>
           <div className="relative">
             <Mail size={20} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
