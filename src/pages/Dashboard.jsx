@@ -37,7 +37,7 @@ function Dashboard() {
             }
         };
         fetchData();
-    }, [logout]);
+    }, []);
 
     if (loading) {
         return (

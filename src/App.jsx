@@ -41,9 +41,9 @@ const App = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen text-white antialiased flex items-center justify-center bg-background">
+      <div className="min-h-screen text-white antialiased flex items-center justify-center bg-background flex-col">
         <div className="w-12 h-12 border-4 border-slate-600 border-t-sky-400 rounded-full animate-spin"></div>
-        <div>Loding...</div>
+        <div>Backend is Loding....</div>
       </div>
     );
   }

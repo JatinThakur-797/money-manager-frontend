@@ -7,7 +7,6 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import currencyFormatter from "../components/currencyFormatter";
 import { categoryAPI, incomeAPI } from "../services/api";
-import { useAuthStore } from "../store/authStore";
 
 function Income() {
   const [incomes, setIncomes] = useState([]);
@@ -20,7 +19,7 @@ function Income() {
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
   const [categoryId, setCategoryId] = useState("");
-  const { logout } = useAuthStore();
+ 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,7 +43,7 @@ function Income() {
       }
     };
     fetchData();
-  }, [logout]);
+  },[]);
 
 
   const getCategoryDetails = (id) => {

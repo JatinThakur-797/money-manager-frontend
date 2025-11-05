@@ -1,7 +1,7 @@
 import { AlertTriangle, Lock, Mail, User } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { authAPI } from "../services/api";
 
 const Signup = () => {
@@ -102,9 +102,9 @@ const Signup = () => {
 
         <p className="text-center text-gray-400 text-sm mt-8">
           Already have an account?{" "}
-          <a href="/login" className="text-blue-400 hover:text-blue-300 transition-colors">
+          <Link to={"/login"} className="text-blue-400 hover:text-blue-300 transition-colors">
             Log In
-          </a>
+          </Link>
         </p>
       </div>
     </div>

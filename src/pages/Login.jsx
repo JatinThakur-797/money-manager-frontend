@@ -3,7 +3,7 @@
 import { AlertTriangle, Lock, Mail } from 'lucide-react'; // Import icons
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { authAPI } from '../services/api';
 import { useAuthStore } from '../store/authStore';
 
@@ -105,9 +105,9 @@ const Login = () => {
 
         <p className="text-center text-gray-400 text-sm mt-8">
           Don't have an account?{' '}
-          <a href="/signup" className="text-green-400 hover:text-green-300 transition-colors">
+          <Link  to={"/signup"} className="text-green-400 hover:text-green-300 transition-colors">
             Sign Up
-          </a>
+          </Link>
         </p>
       </div>
     </div>

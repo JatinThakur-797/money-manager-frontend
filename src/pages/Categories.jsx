@@ -42,7 +42,7 @@ function Categories() {
       }
     };
     fetchCategories();
-  }, [logout]);
+  }, []);
 
   const handleOpenModal = (category = null) => {
     setCurrentCategory(category);
