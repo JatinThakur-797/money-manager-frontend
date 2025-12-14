@@ -37,8 +37,19 @@ const App = () => {
 
   useEffect(() => {
     loadBackend();
+    const intervalId = setInterval(loadBackend, 600000);
+    return () => clearInterval(intervalId);
+
   }, []);
 
+  if (loading) {
+    return (
+      <div className="min-h-screen text-white antialiased flex items-center justify-center bg-background flex-col">
+        <div className="w-12 h-12 border-4 border-slate-600 border-t-sky-400 rounded-full animate-spin"></div>
+        <div>Backend is Loding....</div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -66,6 +77,11 @@ const App = () => {
           )}
         </Routes>
       </BrowserRouter>
+    </>
+  );
+};
+
+export default App;
     </>
   );
 };
