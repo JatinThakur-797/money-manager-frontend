@@ -1,6 +1,6 @@
 "use client";
 
-import { DollarSign, PlusCircle, Trash2, X } from "lucide-react";
+import { PlusCircle, Trash2, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Footer from "../components/Footer";
@@ -29,7 +29,7 @@ function Expense() {
           expenseAPI.getAll(),
           categoryAPI.getAll(),
         ]);
-        
+
 
         setExpenses(expenseResponse.data);
         const expenseCategories = categoryResponse.data.filter(
@@ -227,7 +227,7 @@ function Expense() {
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <DollarSign size={16} className="text-slate-400" />
+                    <p className="text-white" >₹</p>
                   </div>
                   <input
                     id="amount"

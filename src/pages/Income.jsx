@@ -1,6 +1,6 @@
 "use client";
 
-import { DollarSign, PlusCircle, Trash2, X } from "lucide-react";
+import { PlusCircle, Trash2, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Footer from "../components/Footer";
@@ -191,7 +191,7 @@ function Income() {
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <DollarSign size={16} className="text-slate-400" />
+                    <p className="text-white" >₹</p>
                   </div>
                   <input id="amount" type="number" step="0.01" value={amount} onChange={(e) => setAmount(e.target.value)} className="w-full bg-slate-900 border border-slate-700 text-slate-100 rounded-md p-2 pl-10 focus:ring-2 focus:ring-sky-500 focus:outline-none" required />
                 </div>
